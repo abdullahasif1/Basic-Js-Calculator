@@ -53,6 +53,18 @@
 		result.textContent = result.textContent + obj.textContent;
 	}
 
+	function printDigit(e){
+		let result = document.getElementById("result");
+		let obj = e.target;   //e.target will pass(exact value) of the element clicked
+	
+		if(result.textContent == 0)
+			result.textContent = obj.textContent;
+		else
+			result.textContent = result.textContent + obj.textContent;
+		
+
+		}
+
 	let result = document.getElementById("result");
 
 	let num0 = document.getElementById("num0");
@@ -73,16 +85,16 @@
 	let clear = document.getElementById("clear");
 	let eql = document.getElementById("equal");
 
-	num0.addEventListener("click", printSymbol);
-	num1.addEventListener("click", printSymbol);
-	num2.addEventListener("click", printSymbol);
-	num3.addEventListener("click", printSymbol);
-	num4.addEventListener("click", printSymbol);
-	num5.addEventListener("click", printSymbol);
-	num6.addEventListener("click", printSymbol);
-	num7.addEventListener("click", printSymbol);
-	num8.addEventListener("click", printSymbol);
-	num9.addEventListener("click", printSymbol);
+	num0.addEventListener("click", printDigit);
+	num1.addEventListener("click", printDigit);
+	num2.addEventListener("click", printDigit);
+	num3.addEventListener("click", printDigit);
+	num4.addEventListener("click", printDigit);
+	num5.addEventListener("click", printDigit);
+	num6.addEventListener("click", printDigit);
+	num7.addEventListener("click", printDigit);
+	num8.addEventListener("click", printDigit);
+	num9.addEventListener("click", printDigit);
 
 	sub.addEventListener("click", printSymbol);
 	plus.addEventListener("click", printSymbol);
@@ -90,8 +102,7 @@
 	div.addEventListener("click", printSymbol);
 	deci.addEventListener("click", printSymbol);
 	clear.addEventListener("click", () => document.getElementById("result").textContent = 0 );
-	//clear.addEventListener("click", clearScreen);  could be solved with other function calling  ethod
-
+	     
 	eql.addEventListener("click",e => result.textContent = eval(result.textContent) )
 
 </script>
