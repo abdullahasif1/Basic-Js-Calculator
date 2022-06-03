@@ -5,12 +5,14 @@
 
 	<table border =1>
 		<tr>
-			<td id='result' align=right colspan=4>0</td>
+			<td align=right colspan=4>
+				<input id='result' type='textbox' width='120px' value=0 >
+			</td>
 		</tr>
 		<tr>
 			<td id='clear' align=center width='30px' height='30px'>AC</td>
-			<td id='sign' align=center width='30px'>+/-</td>
-			<td id='perc' align=center width='30px'>%</td>
+			<td id='lp' align=center width='30px'>(</td>
+			<td id='rp' align=center width='30px'>)</td>
 			<td id='div'  align=center width='30px'>/</td>
 
 		</tr>
@@ -50,17 +52,18 @@
 	function printSymbol(e){
 		let result = document.getElementById("result");
 		let obj = e.target;
-		result.textContent = result.textContent + obj.textContent;
+		result.value = result.value + obj.textContent;
 	}
+
 
 	function printDigit(e){
 		let result = document.getElementById("result");
 		let obj = e.target;   //e.target will pass(exact value) of the element clicked
 	
-		if(result.textContent == 0)
-			result.textContent = obj.textContent;
+		if(result.value == 0)
+			result.value = obj.textContent;
 		else
-			result.textContent = result.textContent + obj.textContent;
+			result.value = result.value + obj.textContent;
 		
 
 		}
@@ -84,6 +87,8 @@
 	let deci = document.getElementById("decimal");
 	let clear = document.getElementById("clear");
 	let eql = document.getElementById("equal");
+	let rp  = document.getElementById("rp");
+	let lp = document.getElementById("lp");
 
 	num0.addEventListener("click", printDigit);
 	num1.addEventListener("click", printDigit);
@@ -101,9 +106,11 @@
 	mult.addEventListener("click", printSymbol);
 	div.addEventListener("click", printSymbol);
 	deci.addEventListener("click", printSymbol);
-	clear.addEventListener("click", () => document.getElementById("result").textContent = 0 );
+	rp.addEventListener("click" , printSymbol);
+	lp.addEventListener("click" , printSymbol);
+	clear.addEventListener("click", () => document.getElementById("result").value = 0 );
 	     
-	eql.addEventListener("click",e => result.textContent = eval(result.textContent) )
+	eql.addEventListener("click", e => result.value = eval(result.value) );
 
 </script>
 </body>
