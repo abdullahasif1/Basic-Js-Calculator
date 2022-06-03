@@ -1,4 +1,14 @@
 <html>
+
+	<head>
+		<style>
+			.symbol{
+				width:30px;
+				height:30px;
+				text-align-last:center;
+			}
+		</style>
+	</head>
 <body>
 	<h1> My calculator</h1>
 
@@ -10,35 +20,35 @@
 			</td>
 		</tr>
 		<tr>
-			<td id='clear' align=center width='30px' height='30px'>AC</td>
-			<td id='lp' align=center width='30px'>(</td>
-			<td id='rp' align=center width='30px'>)</td>
-			<td id='div'  align=center width='30px'>/</td>
+			<td id='clear' class="symbol">AC</td>
+			<td id='lp' class="symbol">(</td>
+			<td id='rp' class="symbol">)</td>
+			<td id='div'  class="symbol">/</td>
 
 		</tr>
 		<tr>
-                        <td id='num7' align=center height='30px'>7</td>
-                        <td id='num8' align=center>8</td>
-			<td id='num9' align=center>9</td>
-                        <td id='mult' align=center>*</td>
+                        <td id='num7' class="symbol">7</td>
+                        <td id='num8' class="symbol">8</td>
+			<td id='num9' class="symbol">9</td>
+                        <td id='mult' class="symbol">*</td>
 
                 </tr>
 		<tr>
-                        <td id='num4' align=center height='30px'>4</td>
-                        <td id='num5' align=center>5</td>
-                        <td id='num6' align=center>6</td>
-                        <td id='sub' align=center>-</td>
+                        <td id='num4' class="symbol">4</td>
+                        <td id='num5' class="symbol">5</td>
+                        <td id='num6' class="symbol">6</td>
+                        <td id='sub'  class="symbol">-</td>
                 </tr>
 		<tr>
-                        <td id='num1' align=center height='30px'>1</td>
-                        <td id='num2' align=center>2</td>
-                        <td id='num3' align=center>3</td>
-                        <td id='plus' align=center>+</td>
+                        <td id='num1' class="symbol">1</td>
+                        <td id='num2' class="symbol">2</td>
+                        <td id='num3' class="symbol">3</td>
+                        <td id='plus' class="symbol">+</td>
                 </tr>
 		<tr>
-			<td id='num0' align=left colspan=2>0</td>
-			<td id='decimal' align=center>.</td>
-			<td id='equal' align=center>=</td>
+			<td id='num0' class="symbol" colspan=2>0</td>
+			<td id='decimal' class="symbol">.</td>
+			<td id='equal' align=center class="symbol">=</td>
 		</tr>
 
 
@@ -49,14 +59,14 @@
 		//num3.textContent="Sup"
 
 
-	function printSymbol(e){
+/*	function printSymbol(e){
 		let result = document.getElementById("result");
 		let obj = e.target;
 		result.value = result.value + obj.textContent;
 	}
+*/
 
-
-	function printDigit(e){
+	function printSymbol(e){     //now this fun compute all(digits+symbol)
 		let result = document.getElementById("result");
 		let obj = e.target;   //e.target will pass(exact value) of the element clicked
 	
@@ -67,6 +77,9 @@
 		
 
 		}
+	
+
+
 
 	let result = document.getElementById("result");
 
@@ -90,6 +103,13 @@
 	let rp  = document.getElementById("rp");
 	let lp = document.getElementById("lp");
 
+
+	let symbols = [num0,num1,num2,num3,num4,num5,num6,num7,num8,num9, sub, plus,mult, div,deci,rp,lp];      //can push into array by "symbol.push(num1)"
+
+	for (let i = 0; i < symbols.length; i++)
+	symbols[i].addEventListener("click", printSymbol);
+	
+/*
 	num0.addEventListener("click", printDigit);
 	num1.addEventListener("click", printDigit);
 	num2.addEventListener("click", printDigit);
@@ -108,7 +128,8 @@
 	deci.addEventListener("click", printSymbol);
 	rp.addEventListener("click" , printSymbol);
 	lp.addEventListener("click" , printSymbol);
-	clear.addEventListener("click", () => document.getElementById("result").value = 0 );
+*/
+        clear.addEventListener("click", () => document.getElementById("result").value = 0 );
 	     
 	eql.addEventListener("click", e => result.value = eval(result.value) );
 
